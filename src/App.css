@@ -34,6 +34,10 @@ html{
 
 /* User and time info */
 
+.info{
+  background-color:white;
+}
+
 .comment .info{
   width: 17%;
 }
@@ -46,10 +50,15 @@ html{
   order: 3;
 }
 
+.author-comment{
+  background-color: #E1F8FE;
+}
 
 .comment .info a{	/* User name */
   display: block;
   text-decoration: none;
+  font-weight:bold;
+  color:#808080;
   /* change text color and font weight */
   text-overflow: ellipsis;
   overflow: hidden;
@@ -64,7 +73,9 @@ html{
 
 
 /* The user avatar */
-
+.avatar{
+  background-color: white;
+}
 .comment .avatar{
   width: 8%;
 }

@@ -11,16 +11,36 @@ class App extends Component {
     this.state = {
       comment: '',
       messages: [],
+      user: {
+        name: "Deku Bakugo",
+        photo: "https://api.adorable.io/avatars/285/avatar_user_3.png"
+      }
     }
+
+    this.handleInputChange = this.handleInputChange.bind(this);
   }
 
   componentDidMount() {
-    this.setState({ comment: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisee gravida sem sit amet molestie porttitor." })
+    this.setState({ comment: ""})
   }
 
   handleSubmit = () => {
+    //alert(this.state.comment);
+   // this.setState({messages: this.state.messages.concat(this.state.comment)})
+    let comment_messages = this.state.messages;
+    let submission_comment = this.state.comment;
+    const submission_date = new Date();
+
+    comment_messages.push({
+      name: this.state.user.name,
+      content : submission_comment,
+     //date : submission_date.getHours()+" : "+ submission_date.getMinutes()+" : "+ submission_date.getSeconds(),
+      date: submission_date.toLocaleString(),
+      photo: this.state.user.photo
+    })
+
+    this.setState({messages : comment_messages})
     console.log(this.state.comment)
-    // Modify this function to handle user submissions and update state
   }
 
   handleInputChange(e) {
@@ -36,13 +56,32 @@ class App extends Component {
 
   }
 
+
   render() {
+    const {messages} = this.state;
+    const messageList = messages.map((item) =>
+  
+
+    //List mapping for comment submission
+    <li className="comment author-comment">
+    <div className="info">
+      <a href="#">{item.name}</a>
+      <span>{item.date}</span>
+    </div>
+
+    <a className="avatar" href="#">
+      <img src={item.photo} width="35" alt="Profile Avatar" title="Jack Smith" />
+    </a>
+
+    <p>{item.content}</p>
+  </li>
+
+    )
     return (
       <div classNameName="App">
         <ul className="comment-section">
 
           {/* Replace the contents of comment-section with the appended list of user comments */}
-
 
           <li className="comment author-comment">
 
@@ -58,12 +97,14 @@ class App extends Component {
             <p>Random comment goes here</p>
 
           </li>
+         
+            {messageList}
 
+         
           <li className="write-new">
-
             <form>
 
-              <textarea placeholder="Write your comment here" name="comment" value={this.state.comment}></textarea>
+              <textarea placeholder="Write your comment here" name="comment" value={this.state.comment} onChange={this.handleInputChange}></textarea>
 
               <div>
                 <img src="https://api.adorable.io/avatars/285/avatar_user_4.png" width="35" alt="Profile of Bradley Jones" title="Bradley Jones" />
