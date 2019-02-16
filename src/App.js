@@ -10,7 +10,10 @@ class App extends Component {
     // Use these state variables to save the user comment and store a list of previously added comments
     this.state = {
       comment: '',
+      
       messages: [],
+
+      
     }
   }
 
@@ -19,6 +22,26 @@ class App extends Component {
   }
 
   handleSubmit = () => {
+
+    var d = new Date();
+
+    //var the_time = d.getFullYear() + "/" + d.getMonth() + "/" + d.getDay() + "  " + d.getHours() + ":" + d.getMinutes() + ":" + d.getMilliseconds();
+
+    var the_time = d.toLocaleString();
+
+
+    const {messages} = this.state;   
+
+    messages.push({
+      message_value: this.state.comment,
+      message_author: "Jack Smith",
+      message_photo: "https://api.adorable.io/avatars/285/"+ Math.random() +".png",
+      message_timestamp: the_time
+    });
+
+    this.setState({ messages:messages })
+
+
     console.log(this.state.comment)
     // Modify this function to handle user submissions and update state
   }
@@ -37,7 +60,47 @@ class App extends Component {
   }
 
   render() {
+
+
+  const {messages} = this.state
+
+  const messagesTable =  messages.map(function (item) {
+    // console.log(item)
+     // map the new array to list items
+     return (
+
+     <li className="comment author-comment">
+
+     <div className="info">
+       <a href="#">{item.message_author}</a>
+       <span>{item.message_timestamp}</span>
+     </div>
+
+     <a className="avatar" href="#">
+       <img src={item.message_photo} width="35" alt="Profile Avatar" title="{item.message_author}" />
+     </a>
+
+     <p>{item.message_value}</p>
+
+
+
+   </li>
+
+     )
+
+
+     
+   })
+
+
+
     return (
+
+
+
+
+
+
       <div classNameName="App">
         <ul className="comment-section">
 
@@ -57,13 +120,15 @@ class App extends Component {
 
             <p>Random comment goes here</p>
 
-          </li>
 
+
+          </li>
+{messagesTable}
           <li className="write-new">
 
             <form>
 
-              <textarea placeholder="Write your comment here" name="comment" value={this.state.comment}></textarea>
+              <textarea placeholder="Write your comment here" name="comment" onChange={evt => this.handleInputChange(evt)}></textarea>
 
               <div>
                 <img src="https://api.adorable.io/avatars/285/avatar_user_4.png" width="35" alt="Profile of Bradley Jones" title="Bradley Jones" />
