@@ -10,6 +10,8 @@ class App extends Component {
     // Use these state variables to save the user comment and store a list of previously added comments
     this.state = {
       comment: '',
+      author: 'Sha',
+      image: "https://api.adorable.io/avatars/285/avatar_user_4.png",
       messages: [],
     }
   }
@@ -19,7 +21,34 @@ class App extends Component {
   }
 
   handleSubmit = () => {
+
+    var date = new Date()
+
+    var messagetime = date.toLocaleString()
+
     console.log(this.state.comment)
+    console.log(this.state.author)
+
+    const {messages} = this.state
+
+    messages.push({
+      messages_value: this.state.comment,
+      messages_author: this.state.author,
+      messages_image: this.state.image,
+      messages_time: messagetime
+    });
+
+    this.setState({messages:messages})
+
+    //var input = document.getElementById("comment").value;
+    //console.log(input)
+
+    //var inputNode = document.createElement("p");
+    //inputNode.innerHTML = input 
+
+    //input.appendChild(inputNode)
+
+
     // Modify this function to handle user submissions and update state
   }
 
@@ -32,11 +61,36 @@ class App extends Component {
       return {
         [name]: value,
       }
-    })
+})
 
   }
 
   render() {
+
+    const {messages} = this.state
+
+    const messageTable = messages.map(function (value){
+
+        return(
+      <li className="comment user-comment">
+
+            <div className="info">
+              <a href="#">{value.messages_author}</a>
+              <span>{value.messages_time}</span>
+            </div>
+
+            <a className="avatar" href="#">
+              <img src={value.messages_image} width="35"/>
+            </a>
+
+            <p>{value.messages_value}</p>
+
+          </li>
+        )
+
+    })
+
+
     return (
       <div classNameName="App">
         <ul className="comment-section">
@@ -58,12 +112,12 @@ class App extends Component {
             <p>Random comment goes here</p>
 
           </li>
-
+{messageTable}
           <li className="write-new">
 
             <form>
 
-              <textarea placeholder="Write your comment here" name="comment" value={this.state.comment}></textarea>
+              <textarea placeholder="Write your comment here" name="comment" onChange={evt => this.handleInputChange(evt)}></textarea>
 
               <div>
                 <img src="https://api.adorable.io/avatars/285/avatar_user_4.png" width="35" alt="Profile of Bradley Jones" title="Bradley Jones" />
@@ -75,7 +129,6 @@ class App extends Component {
           </li>
 
         </ul>
-
         <footer>
           <a href="http://tutorialzine.com/2015/11/using-flexbox-to-create-a-responsive-comment-section/">Inspired by this tutorial</a>
         </footer>
