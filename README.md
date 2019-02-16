@@ -2,5 +2,5 @@ Instructions for the final workshop
 
 ## Screenshot
 
-![Screenshot](https://user-images.githubusercontent.com/420006/52903315-c7c58200-31f1-11e9-8983-d4bd5e54b38d.png)
+![Screenshot](https://user-images.githubusercontent.com/420006/52903333-28ed5580-31f2-11e9-960f-142e44b68a42.png)
 
