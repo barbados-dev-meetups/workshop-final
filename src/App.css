@@ -16,6 +16,10 @@ html{
   padding: 10px;
 }
 
+.avatar {
+  background-color: white;
+}
+
 .comment{
   display: flex;
   border-radius: 3px;
@@ -27,6 +31,11 @@ html{
   color:  #808080;
 }
 
+.author-comment {
+  background-color: #E1F8FE;
+ 
+}
+
 .comment.author-comment{
   color:  #60686d;
   justify-content: flex-end;
@@ -36,6 +45,11 @@ html{
 
 .comment .info{
   width: 17%;
+  background-color: white;
+}
+
+.info {
+  background-color: white;
 }
 
 .comment.user-comment .info{
@@ -49,6 +63,8 @@ html{
 
 .comment .info a{	/* User name */
   display: block;
+  font-weight:bold;
+  color: #7D7D7D;
   text-decoration: none;
   /* change text color and font weight */
   text-overflow: ellipsis;
@@ -102,7 +118,7 @@ html{
 }
 
 .comment.user-comment p{
-  background-color:  #f3f3f3;
+  background-color: rgb(233, 235, 121);
 }
 
 .comment.author-comment p{
