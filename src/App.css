@@ -8,6 +8,11 @@ html{
   font: normal 13px sans-serif;
 }
 
+.donate{
+    height: 10%;
+    width:auto;
+}
+
 .comment-section{
   list-style: none;
   max-width: 800px;
