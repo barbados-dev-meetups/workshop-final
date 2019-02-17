@@ -1,3 +1,6 @@
+.info a { font-weight: bold; color:black}
+.author-comment{ background-color: lightblue}
+
 *{
   margin: 0;
   padding: 0;
