@@ -55,6 +55,8 @@ html{
   overflow: hidden;
   white-space: nowrap;
   padding: 10px 0 3px 0;
+  color: #686D73;
+  font-weight:bold
 }
 
 .comment .info span{	/* Time */
@@ -108,6 +110,7 @@ html{
 .comment.author-comment p{
   /* change background color to light blue */
   order: 1;
+  background-color: #E1F8FE;
 }
 
 .user-comment p:after{
