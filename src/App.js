@@ -13,7 +13,14 @@ class App extends Component {
       
       messages: [],
 
-      
+      account:null,
+      web3:null,
+      errorMsg:'',
+      transferForm:{
+        amount: 0,
+        address:''
+      },
+
     }
   }
 
@@ -95,11 +102,6 @@ class App extends Component {
 
 
     return (
-
-
-
-
-
 
       <div classNameName="App">
         <ul className="comment-section">
